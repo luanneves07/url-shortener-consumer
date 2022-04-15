@@ -1,0 +1,31 @@
+{
+  "name": "url-shortener-listener",
+  "version": "1.0.0",
+  "description": "Projeto criado como entrega final para a aula de NodeJS para inserir dados no banco",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [
+    "url",
+    "shortener",
+    "consumer",
+    "listener"
+  ],
+  "author": "Luan Neves & Guilherme Pavarina",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.8.0",
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "knex": "^1.0.7",
+    "pg": "^8.7.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
