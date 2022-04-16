@@ -25,7 +25,7 @@ module.exports = {
                 mainChannel.consume('db-insert-queue', (msg) => {
                     setTimeout(() => {
                         persist(msg.content.toString());
-                    }, 50);
+                    }, 25);
                 }, { noAck: true }
                 );
             });

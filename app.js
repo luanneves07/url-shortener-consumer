@@ -20,6 +20,9 @@ const knex = require('knex')({
     }
 });
 
+const { request } = require('undici');
+const generatorEndpoint = process.env.URL_GENERATOR_ENDPOINT;
+
 /**
  * Environment
  */
@@ -40,9 +43,16 @@ app.listen(port, () => {
     console.log(`Server started at port ${port}/`);
 });
 
-function persistData(data) {
+async function persistData(data) {
     if (data) {
-        const shortenedData = JSON.parse(data);
+        const originalUrl = JSON.parse(data);
+        const { body } = await request(generatorEndpoint);
+        const shortenedUrl = await body.json();
+        const shortenerUniqueID = shortenedUrl.shortened_url;
+        const shortenedData = {
+            original_url: originalUrl.original_url,
+            shortened_url: shortenerUniqueID
+        }
         knex('urls').insert(shortenedData)
             .then((insertedData) => {
                 console.log(insertedData);
